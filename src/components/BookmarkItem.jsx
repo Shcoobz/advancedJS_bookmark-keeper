@@ -4,6 +4,11 @@ import { BookmarkContext } from '../context/BookmarkContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Displays a single bookmark item with an option to delete.
+ * @param {string} url - The URL of the bookmark.
+ * @param {string} name - The display name of the bookmark.
+ */
 function BookmarkItem({ url, name }) {
   const { deleteBookmark } = useContext(BookmarkContext);
 

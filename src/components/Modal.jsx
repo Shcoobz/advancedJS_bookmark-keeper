@@ -2,9 +2,19 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { BookmarkContext } from '../context/BookmarkContext';
 
+/**
+ * Represents the modal component used for adding new bookmarks.
+ * It displays a form that captures a new bookmark's name and URL.
+ * @param {boolean} isModalOpen - Controls the visibility of the modal.
+ * @param {Function} setModalOpen - Function to set the modal's open/close state.
+ */
 function Modal({ isModalOpen, setModalOpen }) {
   const { addBookmark } = useContext(BookmarkContext);
 
+  /**
+   * Handles form submission to add a new bookmark and close the modal.
+   * @param {Event} event - The form submission event.
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = event.target.elements['name'].value;
