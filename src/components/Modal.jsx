@@ -1,25 +1,24 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { BookmarkContext } from '../context/BookmarkContext';
 
-function Modal() {
-  const [websiteName, setWebsiteName] = useState('');
-  const [websiteUrl, setWebsiteUrl] = useState('');
-  const { showModal, setShowModal, addBookmark } = useContext(BookmarkContext);
+function Modal({ isModalOpen, setModalOpen }) {
+  const { addBookmark } = useContext(BookmarkContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addBookmark(websiteName, websiteUrl);
-    setWebsiteName('');
-    setWebsiteUrl('');
-    setShowModal(false);
+    const name = event.target.elements['name'].value;
+    const url = event.target.elements['url'].value;
+    addBookmark(name, url);
+    setModalOpen(false);
   };
 
-  if (!showModal) return null;
+  if (!isModalOpen) return null;
 
   return (
-    <div className='modal-container'>
+    <div className='modal-container show-modal'>
       <div className='modal'>
-        <i className='fas fa-times close-icon' onClick={() => setShowModal(false)}></i>
+        <i className='fas fa-times close-icon' onClick={() => setModalOpen(false)}></i>
         <div className='modal-header'>
           <h3>Add Bookmark</h3>
         </div>
@@ -27,21 +26,11 @@ function Modal() {
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <label className='form-label'>Website Name</label>
-              <input
-                type='text'
-                className='form-input'
-                value={websiteName}
-                onChange={(e) => setWebsiteName(e.target.value)}
-              />
+              <input type='text' className='form-input' name='name' />
             </div>
             <div className='form-group'>
               <label className='form-label'>Website URL</label>
-              <input
-                type='text'
-                className='form-input'
-                value={websiteUrl}
-                onChange={(e) => setWebsiteUrl(e.target.value)}
-              />
+              <input type='text' className='form-input' name='url' />
             </div>
             <button type='submit'>Save</button>
           </form>
@@ -50,5 +39,10 @@ function Modal() {
     </div>
   );
 }
+
+Modal.propTypes = {
+  isModalOpen: PropTypes.bool.isRequired,
+  setModalOpen: PropTypes.func.isRequired,
+};
 
 export default Modal;

@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { BookmarkContext } from '../context/BookmarkContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function BookmarkItem({ url, name }) {
   const { deleteBookmark } = useContext(BookmarkContext);
@@ -16,7 +18,11 @@ function BookmarkItem({ url, name }) {
           {name}
         </a>
       </div>
-      <i className='fas fa-times close-icon' onClick={() => deleteBookmark(url)}></i>
+      <FontAwesomeIcon
+        icon={faTimes}
+        className='close-icon'
+        onClick={() => deleteBookmark(url)}
+      />
     </div>
   );
 }

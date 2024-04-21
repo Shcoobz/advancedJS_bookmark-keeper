@@ -8,8 +8,21 @@ export function BookmarkProvider({ children }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || {};
-    setBookmarks(storedBookmarks);
+    // Fetch bookmarks from local storage or set default
+    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    if (storedBookmarks && Object.keys(storedBookmarks).length > 0) {
+      setBookmarks(storedBookmarks);
+    } else {
+      // Initialize with a default bookmark if no bookmarks are stored
+      const defaultBookmarks = {
+        'https://shcoobz.github.io/': {
+          name: 'Shcoobz Portfolio',
+          url: 'https://shcoobz.github.io/',
+        },
+      };
+      setBookmarks(defaultBookmarks);
+      localStorage.setItem('bookmarks', JSON.stringify(defaultBookmarks));
+    }
   }, []);
 
   const addBookmark = (name, url) => {
