@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Modal from './components/Modal';
 import BookmarkList from './components/BookmarkList';
 import { BookmarkProvider } from './context/BookmarkContext';
-import './css/App.css';
 
 /**
  * The top-level component for the Bookmark application.
