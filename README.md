@@ -42,4 +42,4 @@ Each bookmark can be deleted with a simple click on the "Delete" icon next to th
 
 _Note: This document provides an overview of **React Bookmark Keeper**. For detailed instructions and more information, please refer to the source code documentation._
 
-This project is a conversion from an earlier version built with vanilla JavaScript and HTML, available [here](https://github.com/Shcoobz/basicJS_bookmark-keeper). This conversion integrates React to enhance UI reactivity and maintainability.
+_This project is a conversion from an earlier version built with vanilla JavaScript and HTML, available [here](https://github.com/Shcoobz/basicJS_bookmark-keeper). This conversion integrates React to enhance UI reactivity and maintainability._
