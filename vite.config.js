@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/react_bookmark-keeper/',
+  base: '/advancedJS_bookmark-keeper/',
   build: {
     outDir: 'build',
   },
